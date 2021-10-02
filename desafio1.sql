@@ -3,52 +3,52 @@ CREATE DATABASE SpotifyClone;
 USE SpotifyClone;
 
 CREATE TABLE planos(
-	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(100) NOT NULL,
-    preço DOUBLE NOT NULL
+id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+nome VARCHAR(100) NOT NULL,
+preço DOUBLE NOT NULL
 ) ENGINE=innoDB;
 
 CREATE TABLE usuarios(
-	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(100) NOT NULL,
-    idade INT NOT NULL,
-    plano_id INT NOT NULL,
-    FOREIGN KEY(plano_id) REFERENCES planos(id)
+id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+nome VARCHAR(100) NOT NULL,
+idade INT NOT NULL,
+plano_id INT NOT NULL,
+FOREIGN KEY(plano_id) REFERENCES planos(id)
 ) engine=innoDB;
 
 CREATE TABLE artistas(
-	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(100) NOT NULL
+id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+nome VARCHAR(100) NOT NULL
 ) ENGINE=innoDB;
 
 CREATE TABLE albuns(
-	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(100) NOT NULL,
-    artista_id INT NOT NULL,
-    FOREIGN KEY(artista_id) REFERENCES artistas(id)
+id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+nome VARCHAR(100) NOT NULL,
+artista_id INT NOT NULL,
+FOREIGN KEY(artista_id) REFERENCES artistas(id)
 ) ENGINE=innoDB;
 
 CREATE TABLE musicas(
-	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(200) NOT NULL,
-    album_id INT NOT NULL,
-    FOREIGN KEY(album_id) REFERENCES albuns(id)
+id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+nome VARCHAR(200) NOT NULL,
+album_id INT NOT NULL,
+FOREIGN KEY(album_id) REFERENCES albuns(id)
 ) ENGINE=innoDB;
 
 CREATE TABLE usuarios_artistas(
-	artista_id INT NOT NULL,
-    usuario_id INT NOT NULL,
-    CONSTRAINT PRIMARY KEY(artista_id, usuario_id),
-    FOREIGN KEY (artista_id) REFERENCES artistas(id),
-    FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
+artista_id INT NOT NULL,
+usuario_id INT NOT NULL,
+CONSTRAINT PRIMARY KEY(artista_id, usuario_id),
+FOREIGN KEY (artista_id) REFERENCES artistas(id),
+FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
 ) ENGINE=innoDB;
 
 CREATE TABLE historico_ouvidas(
-	usuario_id INT NOT NULL,
-    musica_id INT NOT NULL,
-    CONSTRAINT PRIMARY KEY(usuario_id, musica_id),
-    FOREIGN KEY (usuario_id) REFERENCES usuarios(id),
-    FOREIGN KEY (musica_id) REFERENCES musicas(id)
+usuario_id INT NOT NULL,
+musica_id INT NOT NULL,
+CONSTRAINT PRIMARY KEY(usuario_id, musica_id),
+FOREIGN KEY (usuario_id) REFERENCES usuarios(id),
+FOREIGN KEY (musica_id) REFERENCES musicas(id)
 ) ENGINE=innoDB;
 
 INSERT INTO planos(nome, preço) VALUES('gratuito', 0),
