@@ -1,4 +1,4 @@
-# Projeto All for One - MySql
+# Projeto One for All - MySql
 
 Esse foi meu primeiro projeto manipulando querys em MySql aqui na [Trybe](https://www.betrybe.com/):rocket:
 
